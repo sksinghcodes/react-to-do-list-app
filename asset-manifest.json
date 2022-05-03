@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/repository-name/static/js/main.26d2abb0.js",
-    "index.html": "/repository-name/index.html",
-    "main.26d2abb0.js.map": "/repository-name/static/js/main.26d2abb0.js.map"
+    "main.js": "/react-to-do-list-app/static/js/main.26d2abb0.js",
+    "index.html": "/react-to-do-list-app/index.html",
+    "main.26d2abb0.js.map": "/react-to-do-list-app/static/js/main.26d2abb0.js.map"
   },
   "entrypoints": [
     "static/js/main.26d2abb0.js"
