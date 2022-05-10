@@ -52,9 +52,14 @@ class TaskItem extends Component {
     render() {
         const {id, isCompleted, task} = this.props.taskItem;
         const {taskGettingEdit} = this.props;
+        const isGettingEdit = id === taskGettingEdit.id;
 
         return (
-            <li className="task_item">
+            <li 
+                className="task_item"
+                onMouseEnter={() => this.resizeTextarea()}
+                onMouseLeave={() => this.resizeTextarea()}
+            >
 
                 <label className="toggle_label">
                     <input 
@@ -65,18 +70,17 @@ class TaskItem extends Component {
                 </label>
 
                 <textarea 
-                    className="task_text" 
-                    value={id === taskGettingEdit.id ? this.props.taskGettingEdit.currentValue : task }
-                    readOnly={id !== taskGettingEdit.id}
+                    className={`task_text ${isCompleted ? 'completed' : ''}`} 
+                    value={isGettingEdit ? this.props.taskGettingEdit.currentValue : task }
+                    readOnly={!isGettingEdit}
                     onInput={this.handleInputChange}
                     rows={1}
                     ref={this.textareaRef}
-                    onMouseEnter={() => this.resizeTextarea()}
-                    onMouseLeave={() => this.resizeTextarea()}
+                    onClick={!isGettingEdit && this.handleCompletionToggle}
                 ></textarea>
 
                 <div className="controls">
-                    {id !== taskGettingEdit.id ? (
+                    {!isGettingEdit ? (
                         <Control 
                             action={(e) => this.handleEditStart(e)}
                             classNameValue="fas fa-pen"

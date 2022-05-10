@@ -4,10 +4,6 @@
     align-items: stretch;
 }
 
-.task_item:hover .toggle_label {
-    background-color: #dedede;
-}
-
 .toggle_label {
     min-width: 40px;
     border-radius: 0;
@@ -39,8 +35,9 @@
     color: #333;
 }
 
-.task_item:hover .task_text[readonly] {
-    background-color: #f4f4f4;
+.task_item .task_text.completed {
+    text-decoration: line-through;
+    color: #999;
 }
 
 .controls button {
@@ -62,6 +59,8 @@
     height: 18px;
 }
 
+
+
 @media (min-width: 768px) {
     .controls {
         display: none;
@@ -79,6 +78,14 @@
     .controls button:hover {
         background: #486480;
         transition-duration: 0.2s;
+    }
+
+    .task_item:hover .task_text[readonly] {
+        background-color: #f4f4f4;
+    }
+
+    .task_item:hover .toggle_label {
+        background-color: #dedede;
     }
 }
 
