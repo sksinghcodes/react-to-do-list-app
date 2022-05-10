@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Control from './Control';
+import './TaskItem.css';
 
 class TaskItem extends Component {
     constructor(props) {
@@ -53,32 +54,43 @@ class TaskItem extends Component {
         const {taskGettingEdit} = this.props;
 
         return (
-            <li style={{display: 'flex'}}>
+            <li className="task_item">
 
-                <div className="input-wrap">
+                <label className="toggle_label">
                     <input 
                         type="checkbox" 
                         onChange={this.handleCompletionToggle}
                         checked={isCompleted}
                     />
-                </div>
+                </label>
 
                 <textarea 
-                    className="task-text" 
+                    className="task_text" 
                     value={id === taskGettingEdit.id ? this.props.taskGettingEdit.currentValue : task }
                     readOnly={id !== taskGettingEdit.id}
                     onInput={this.handleInputChange}
                     rows={1}
                     ref={this.textareaRef}
+                    onMouseEnter={() => this.resizeTextarea()}
+                    onMouseLeave={() => this.resizeTextarea()}
                 ></textarea>
 
                 <div className="controls">
                     {id !== taskGettingEdit.id ? (
-                        <Control action={(e) => this.handleEditStart(e)} text="edit"/>
+                        <Control 
+                            action={(e) => this.handleEditStart(e)}
+                            classNameValue="fas fa-pen"
+                        />
                     ) : (
-                        <Control action={() => this.handleTaskSave()} text="save"/>
+                        <Control 
+                            action={() => this.handleTaskSave()} 
+                            classNameValue="fas fa-save"
+                        />
                     )}
-                    <Control action={() => this.props.onDelete(id)} text="delete"/>
+                    <Control 
+                        action={() => this.props.onDelete(id)} 
+                        classNameValue="fas fa-trash"
+                    />
                 </div>
             </li>
         );

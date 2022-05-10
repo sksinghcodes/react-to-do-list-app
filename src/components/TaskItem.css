@@ -1,0 +1,94 @@
+.task_item {
+    display: flex;
+    min-height: 40px;
+    align-items: stretch;
+}
+
+.task_item:hover .toggle_label {
+    background-color: #dedede;
+}
+
+.toggle_label {
+    min-width: 40px;
+    border-radius: 0;
+    border: none;
+    font-size: 20px;
+    color: #0005;
+    transition-duration: 0.1s;
+    background: none;
+    display: flex;
+    min-height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.task_text {
+    width: 100%;
+    padding: 10px;
+    color: #0008;
+    word-break: break-word;
+    resize: none;
+    border-radius: 0;
+    border: none;
+    font-size: 16px;
+    background: #006cff21;
+}
+
+.task_item .task_text[readonly] {
+    background-color: #0000;
+    color: #333;
+}
+
+.task_item:hover .task_text[readonly] {
+    background-color: #f4f4f4;
+}
+
+.controls button {
+    min-width: 40px;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition-duration: 0.1s;
+}
+
+.controls button:active, .controls button.active {
+    background-color: #409fff;
+}
+
+.toggle_label input {
+    width: 18px;
+    height: 18px;
+}
+
+@media (min-width: 768px) {
+    .controls {
+        display: none;
+    }
+
+    .task_item:hover .controls {
+        display: flex;
+    }
+
+    .controls button {
+        color: white;
+        background-color: #6d8aa2;
+    }
+
+    .controls button:hover {
+        background: #486480;
+        transition-duration: 0.2s;
+    }
+}
+
+@media (max-width: 767px) {
+    .controls {
+        display: flex;
+    }
+    
+    .controls button {
+        color: #6d8aa2;
+        background-color: white;
+    }
+}

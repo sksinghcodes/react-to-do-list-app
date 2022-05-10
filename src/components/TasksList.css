@@ -1,0 +1,14 @@
+@media (min-width: 768px) {
+    .tasks_list {
+        max-height: calc(100vh - 160px);
+        overflow: auto;
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .tasks_list {
+	    max-height: calc(100% - 60px);
+	    overflow: auto;
+	}
+}

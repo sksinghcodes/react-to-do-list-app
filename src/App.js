@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddTaskForm from './components/AddTaskForm';
 import TasksList from './components/TasksList';
 import { v4 as uuidv4 } from 'uuid';
+import './App.css';
 
 class App extends Component {
     state = {
@@ -26,13 +27,14 @@ class App extends Component {
     }
 
     addTask(task) {
-        const taskList = this.state.taskList;
-
-        taskList.push({
-            task: task,
-            isCompleted: false,
-            id: uuidv4()
-        });
+        const taskList = [
+            ...this.state.taskList,
+            {
+                task: task,
+                isCompleted: false,
+                id: uuidv4()
+            }
+        ];
 
         this.setState({taskList})
         this.updateLocalStorage(taskList);
@@ -40,19 +42,18 @@ class App extends Component {
 
     deleteTask(id) {
         const taskList = this.state.taskList.filter(taskItem => taskItem.id !== id);
-        this.setState({taskList})
+        this.setState({taskList});
         this.updateLocalStorage(taskList);
     }
 
     updateTask(id, task, isCompleted) {
-        const taskList = this.state.taskList;
-
-        taskList.forEach(taskItem => {
-            if(taskItem.id === id) {
-                taskItem.task = task;
-                taskItem.isCompleted = isCompleted;
+        const taskList = this.state.taskList.map(taskItem => {
+            if (taskItem.id === id) {
+                return { id, task, isCompleted }
+            } else {
+                return {...taskItem}
             }
-        })
+        });
 
         this.setState({
             taskList,
@@ -87,7 +88,7 @@ class App extends Component {
     }
 
     updateCurrentValue(currentValue) {
-        const taskGettingEdit = this.state.taskGettingEdit;
+        const taskGettingEdit = {...this.state.taskGettingEdit};
         taskGettingEdit.currentValue = currentValue;
         this.setState({taskGettingEdit})
     }
@@ -98,7 +99,7 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="app">
                 <AddTaskForm
                     onAddTask={this.addTask}
                 />

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AddTaskForm.css';
 
 class AddTaskForm extends Component {
     state = { 
@@ -38,16 +39,18 @@ class AddTaskForm extends Component {
 
     render() { 
         return (
-            <div className="AddTaskForm">
+            <div className="add_task_form">
                 <input 
                     type="text" 
                     value={this.state.inputValue}
                     onInput={this.handleInputChange}
                     onKeyPress={this.handleEnterKey}
+                    placeholder="Type here..."
                 />
                 <button
+                    className="fas fa-plus"
                     onClick={this.handleTaskSubmit}
-                >+</button>
+                ></button>
             </div>
         );
     }

@@ -1,0 +1,62 @@
+.add_task_form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add_task_form:focus-within {
+    box-shadow: 0 0 7px #d4d4d4;
+}
+
+.add_task_form input {
+    width: 100%;
+    border: 1px solid #c1c1c1;
+    background-color: #f7f7f7;
+    border-radius: 20px 0 0 20px;
+    padding: 0 0 0 15px;
+    border-right: none;
+    letter-spacing: 0.8px;
+    color: #636363;
+    font-size: 17px;
+}
+
+.add_task_form input::placeholder {
+    opacity: .5;
+    font-style: italic;
+}
+
+.add_task_form button {
+    min-width: 55px;
+    cursor: pointer;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    background-color: #6d8aa2;
+    color: #ffffff;
+    font-size: 18px;
+    padding-right: 3px;
+    transition-duration: .2s;
+}
+
+.add_task_form button:active {
+    background-color: #409fff;
+}
+
+.add_task_form button:hover {
+    background: #486480;
+}
+
+@media (min-width: 768px) {
+    .add_task_form {
+        margin: 30px;
+        height: 40px;
+        border-radius: 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    .add_task_form {
+	    padding: 10px;
+	    box-shadow: 0 0 10px #0005;
+	    height: 60px;
+	    position: relative;
+	}
+}
