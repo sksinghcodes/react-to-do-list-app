@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import TasksItem from './TaskItem';
+import TaskItem from './TaskItem';
 import './TasksList.css';
 
 class TasksList extends Component {
@@ -9,7 +9,7 @@ class TasksList extends Component {
             <ul className="tasks_list">
                 {this.props.taskList.map(taskItem => (
                     <Fragment key={taskItem.id}>
-                        <TasksItem
+                        <TaskItem
                             taskItem={taskItem}
                             onDelete={this.props.onDelete}
                             onUpdate={this.props.onUpdate}

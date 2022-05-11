@@ -24,7 +24,7 @@ class TaskItem extends Component {
     }
 
     handleEditStart(e){
-        const textarea = e.target.parentElement.previousElementSibling;
+        const textarea = this.textareaRef.current;
         textarea.focus();
         textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
         this.props.onEditStart(this.props.taskItem);
@@ -32,7 +32,6 @@ class TaskItem extends Component {
 
     handleTaskSave() {
         this.props.onEditStop();
-        this.setState({taskValue: this.props.taskItem.task});
     }
 
     resizeTextarea(){
@@ -76,7 +75,7 @@ class TaskItem extends Component {
                     onInput={this.handleInputChange}
                     rows={1}
                     ref={this.textareaRef}
-                    onClick={!isGettingEdit && this.handleCompletionToggle}
+                    onClick={!isGettingEdit ? this.handleCompletionToggle : null}
                 ></textarea>
 
                 <div className="controls">
