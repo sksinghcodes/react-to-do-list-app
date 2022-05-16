@@ -20,7 +20,6 @@ class App extends Component {
         this.addTask = this.addTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
         this.updateTask = this.updateTask.bind(this);
-        this.updateLocalStorage = this.updateLocalStorage.bind(this);
         this.startEditingTask = this.startEditingTask.bind(this);
         this.stopEditingTask = this.stopEditingTask.bind(this);
         this.updateCurrentValue = this.updateCurrentValue.bind(this);
@@ -36,14 +35,12 @@ class App extends Component {
             }
         ];
 
-        this.setState({taskList})
-        this.updateLocalStorage(taskList);
+        this.setState({taskList});
     }
 
     deleteTask(id) {
         const taskList = this.state.taskList.filter(taskItem => taskItem.id !== id);
         this.setState({taskList});
-        this.updateLocalStorage(taskList);
     }
 
     updateTask(id, task, isCompleted) {
@@ -64,7 +61,6 @@ class App extends Component {
                 isCompleted: false,
             }
         });
-        this.updateLocalStorage(taskList);
     }
 
     startEditingTask(taskItem) {
@@ -93,8 +89,12 @@ class App extends Component {
         this.setState({taskGettingEdit})
     }
 
-    updateLocalStorage(taskList) {
-        localStorage.setItem('taskList', JSON.stringify(taskList))
+    componentDidUpdate(){
+        localStorage.setItem('taskList', JSON.stringify(this.state.taskList))
+    }
+
+    componentWillUnmount(){
+        localStorage.setItem('taskList', JSON.stringify(this.state.taskList))
     }
 
     render() {
