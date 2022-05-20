@@ -28,6 +28,7 @@
     border: none;
     font-size: 16px;
     background: #006cff21;
+    overflow: hidden;
 }
 
 .task_item .task_text[readonly] {
